@@ -38,8 +38,14 @@ RUN set -ex \
 
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
-
+RUN mkdir ${AIRFLOW_HOME}/configs
+RUN mkdir ${AIRFLOW_HOME}/logs
+RUN mkdir ${AIRFLOW_HOME}/dags
 RUN chown -R airflow: ${AIRFLOW_HOME}
+
+VOLUME ${AIRFLOW_HOME}/dags
+VOLUME ${AIRFLOW_HOME}/logs
+VOLUME ${AIRFLOW_HOME}/configs
 
 EXPOSE 8080 5555 8793
 

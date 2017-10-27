@@ -19,6 +19,7 @@ services:
      volumes:
        - airflow_dags:/usr/local/airflow/dags
        - airflow_logs:/usr/local/airflow/logs
+       - airflow_configs:/usr/local/airflow/configs
      ports:
        - "8080:8080"
      restart: always
@@ -27,3 +28,4 @@ volumes:
     airflow_db_data:
     airflow_dags:
     airflow_logs:
+    airflow_configs:
